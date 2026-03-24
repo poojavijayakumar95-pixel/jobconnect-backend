@@ -10,7 +10,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/applications")
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = "https://jobconnect-project1.netlify.app/")
 public class ApplicationController {
 
     private final ApplicationService applicationService;

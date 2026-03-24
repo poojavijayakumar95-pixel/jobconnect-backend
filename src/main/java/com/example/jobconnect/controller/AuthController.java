@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/auth")
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = "https://jobconnect-project1.netlify.app/")
 public class AuthController {
 
     private final AuthenticationManager authenticationManager;

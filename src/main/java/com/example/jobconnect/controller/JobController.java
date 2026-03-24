@@ -10,7 +10,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/jobs")
-@CrossOrigin(origins = "http://localhost:3000") // Allows your React app to talk to this API
+@CrossOrigin(origins = "https://jobconnect-project1.netlify.app/") // Allows your React app to talk to this API
 public class JobController {
 
     private final JobService jobService;
