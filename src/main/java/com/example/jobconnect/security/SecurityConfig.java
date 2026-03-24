@@ -66,7 +66,7 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
-        .cors(cors -> cors.configurationSource(corsConfigurationSource1()))
+        .cors(cors -> cors.configurationSource(corsConfigurationSource()))
             // Disable CSRF because we are using JWTs, not session cookies
             .csrf(csrf -> csrf.disable())
             
