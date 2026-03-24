@@ -44,11 +44,11 @@ public class SecurityConfig {
     // 3. Security Filter Chain (The main configuration)
  // Add this right before the final closing brace of the SecurityConfig class
     @Bean
-    public CorsConfigurationSource corsConfigurationSource1() {
+    public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
         
         // 1. Allow your React/Vite port
-        configuration.setAllowedOrigins(List.of("http://localhost:5173")); 
+        configuration.setAllowedOrigins(List.of("http://localhost:5173","https://jobconnect-project1.netlify.app")); 
         
         // 2. Allow all standard HTTP methods, including OPTIONS (the preflight request)
         configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS"));
@@ -106,8 +106,4 @@ public class SecurityConfig {
         return http.build();
     }
 
-	private CorsConfigurationSource corsConfigurationSource() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 }
