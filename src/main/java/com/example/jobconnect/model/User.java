@@ -6,7 +6,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name = "users")
-@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"}) // 1. Fixes the ByteBuddy crash
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"}) 
 public class User {
 
     @Id
@@ -16,7 +16,7 @@ public class User {
     @Column(nullable = false, unique = true)
     private String email;
 
-    @JsonIgnore // 2. Prevents the password from being sent in API responses!
+    @JsonIgnore 
     @Column(nullable = false)
     private String password;
 
@@ -27,10 +27,7 @@ public class User {
     @Column(name = "phone_number")
     private String phoneNumber;
 
-    // ... keep all your existing constructors, getters, and setters below!
-
-
-    // Constructors
+   
     public User() {}
 
     public User(String email, String password, Role role,String phoneNumber) {
@@ -40,7 +37,7 @@ public class User {
         this.phoneNumber = phoneNumber;
     }
 
-    // Getters and Setters
+
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
 

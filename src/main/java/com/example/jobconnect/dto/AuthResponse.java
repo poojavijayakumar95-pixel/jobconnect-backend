@@ -2,7 +2,7 @@ package com.example.jobconnect.dto;
 
 public class AuthResponse {
     private String jwt;
-    private Long userId; // Add this!
+    private Long userId; 
 
     public AuthResponse(String jwt, Long userId) {
         this.jwt = jwt;

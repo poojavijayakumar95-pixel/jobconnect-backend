@@ -38,26 +38,7 @@ public class AuthController {
         this.passwordEncoder = passwordEncoder;
     }
 
-    // 1. REGISTER ENDPOINT
-   /* @PostMapping("/register")
-    public ResponseEntity<?> registerUser(@RequestBody AuthRequest authRequest) {
-        
-        // Check if email is already taken
-        if (userRepository.existsByEmail(authRequest.getEmail())) {
-            return new ResponseEntity<>("Email is already in use!", HttpStatus.BAD_REQUEST);
-        }
-
-        // Create new user and hash the password
-        User newUser = new User(
-                authRequest.getEmail(),
-                passwordEncoder.encode(authRequest.getPassword()), 
-                authRequest.getRole()
-        );
-
-        userRepository.save(newUser);
-
-        return new ResponseEntity<>("User registered successfully", HttpStatus.CREATED);
-    }*/
+    
     @PostMapping("/register")
     public ResponseEntity<?> registerUser(@RequestBody AuthRequest authRequest) {
         
@@ -65,7 +46,7 @@ public class AuthController {
             return new ResponseEntity<>("Email is already in use!", HttpStatus.BAD_REQUEST);
         }
 
-        // Update this block to include the phone number
+        
         User newUser = new User(
                 authRequest.getEmail(),
                 passwordEncoder.encode(authRequest.getPassword()),
@@ -78,30 +59,7 @@ public class AuthController {
         return new ResponseEntity<>("User registered successfully", HttpStatus.CREATED);
     }
 
-    // 2. LOGIN ENDPOINT
-   /* @PostMapping("/login")
-    public ResponseEntity<?> createAuthenticationToken(@RequestBody AuthRequest authRequest) {
-        try {
-            // Tell Spring Security to verify the email and password
-            authenticationManager.authenticate(
-                    new UsernamePasswordAuthenticationToken(authRequest.getEmail(), authRequest.getPassword())
-            );
-        } catch (BadCredentialsException e) {
-            // If the password doesn't match the hash in the database, this error is thrown
-            return new ResponseEntity<>("Incorrect email or password", HttpStatus.UNAUTHORIZED);
-        }
-
-        // If authentication is successful, fetch the user details
-        final UserDetails userDetails = userDetailsService.loadUserByUsername(authRequest.getEmail());
-
-        // Generate the JWT token
-        final String jwt = jwtUtil.generateToken(userDetails);
-
-        // Send the token back to the React frontend
-        return ResponseEntity.ok(new AuthResponse(jwt));
-    }
-}*/
- // 2. LOGIN ENDPOINT
+   
     @PostMapping("/login")
     public ResponseEntity<?> createAuthenticationToken(@RequestBody AuthRequest authRequest) {
         try {
@@ -115,10 +73,10 @@ public class AuthController {
         final UserDetails userDetails = userDetailsService.loadUserByUsername(authRequest.getEmail());
         final String jwt = jwtUtil.generateToken(userDetails);
 
-        // Fetch the user from the DB to get their ID
+        
         User user = userRepository.findByEmail(authRequest.getEmail()).get();
 
-        // Send BOTH the token and the ID to React
+        
         return ResponseEntity.ok(new AuthResponse(jwt, user.getId()));
     }
 }

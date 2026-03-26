@@ -14,12 +14,12 @@ public class Application {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    // Links the application to the specific Job
+    
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "job_id", nullable = false)
     private Job job;
 
-    // Links the application to the Job Seeker
+    
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "seeker_id", nullable = false)
     private User applicant;
@@ -28,7 +28,7 @@ public class Application {
     private LocalDateTime applicationDate;
 
     @Column(nullable = false)
-    private String status; // e.g., PENDING, REVIEWED, REJECTED, HIRED
+    private String status; 
 
     public Application() {
         this.applicationDate = LocalDateTime.now();
@@ -42,7 +42,7 @@ public class Application {
         this.status = "PENDING";
     }
 
-    // Getters and Setters
+    
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
 

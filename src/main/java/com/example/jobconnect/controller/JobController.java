@@ -10,7 +10,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/jobs")
-@CrossOrigin(origins = "https://jobconnect-project1.netlify.app/") // Allows your React app to talk to this API
+@CrossOrigin(origins = "https://jobconnect-project1.netlify.app/")  
 public class JobController {
 
     private final JobService jobService;
@@ -19,16 +19,15 @@ public class JobController {
         this.jobService = jobService;
     }
 
-    // EMPLOYER: Create a new job listing
+    
     @PostMapping("/create")
     public ResponseEntity<Job> createJob(@RequestBody Job job, @RequestParam Long employerId) {
-        /* Note: Right now we pass employerId as a parameter. 
-           Once we implement JWT, we will extract the ID securely from the logged-in user's token instead! */
+        
         Job createdJob = jobService.createJob(job, employerId);
         return new ResponseEntity<>(createdJob, HttpStatus.CREATED);
     }
 
-    // SEEKER: Search for jobs
+    
     @GetMapping("/search")
     public ResponseEntity<List<Job>> searchJobs(
             @RequestParam(required = false) String keyword,
@@ -38,7 +37,7 @@ public class JobController {
         return new ResponseEntity<>(jobs, HttpStatus.OK);
     }
 
-    // EMPLOYER: Get all jobs posted by them
+    
     @GetMapping("/employer/{employerId}")
     public ResponseEntity<List<Job>> getJobsByEmployer(@PathVariable Long employerId) {
         List<Job> jobs = jobService.getJobsByEmployer(employerId);

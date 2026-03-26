@@ -28,7 +28,7 @@ public class Job {
     @Column(nullable = false)
     private LocalDate deadline;
 
-    // Links this job to the Employer who posted it
+   
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "employer_id", nullable = false)
     private User employer;
@@ -44,7 +44,7 @@ public class Job {
         this.employer = employer;
     }
 
-    // Getters and Setters
+    
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
 
