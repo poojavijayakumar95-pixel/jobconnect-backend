@@ -29,7 +29,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 
 @WebMvcTest(JobController.class)
-@Import(SecurityConfig.class)
+@Import({SecurityConfig.class, JwtRequestFilter.class})
 public class JobControllerTest {
 
     @Autowired
@@ -46,8 +46,8 @@ public class JobControllerTest {
     private JwtUtil jwtUtil;
     @MockBean
     private CustomUserDetailsService customUserDetailsService;
-    @MockBean
-    private JwtRequestFilter jwtRequestFilter; 
+   // @MockBean
+    //private JwtRequestFilter jwtRequestFilter; 
 
     @Test
     @WithMockUser(roles = "EMPLOYER") 
