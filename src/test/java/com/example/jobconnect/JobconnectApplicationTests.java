@@ -3,7 +3,7 @@ package com.example.jobconnect;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
-// This forces this specific test to use the temporary H2 database!
+
 @SpringBootTest(properties = {
         "spring.datasource.url=jdbc:h2:mem:testdb",
         "spring.datasource.driverClassName=org.h2.Driver",
@@ -20,7 +20,7 @@ class JobconnectApplicationTests {
 
     @Test
     void contextLoads() {
-        // This just tests if your Spring Boot app can start up without crashing
+        
     }
 
 }

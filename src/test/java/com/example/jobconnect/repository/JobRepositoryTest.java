@@ -12,7 +12,7 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-@DataJpaTest // Configures an in-memory database just for these tests
+@DataJpaTest
 public class JobRepositoryTest {
 
     @Autowired
@@ -23,7 +23,7 @@ public class JobRepositoryTest {
 
     @Test
     public void testSearchJobsByKeyword() {
-        // 1. ARRANGE: Create and save a user and a job into the temporary H2 database
+        
         User employer = new User("emp@test.com", "pass", Role.EMPLOYER, "123");
         userRepository.save(employer);
 
@@ -32,10 +32,10 @@ public class JobRepositoryTest {
         jobRepository.save(job1);
         jobRepository.save(job2);
 
-        // 2. ACT: Call our custom repository search method looking for "java"
+        
         List<Job> foundJobs = jobRepository.findByTitleContainingIgnoreCaseOrLocationContainingIgnoreCase("java", "java");
 
-        // 3. ASSERT: We should only find 1 job, and its title should be "Java Developer"
+        
         assertEquals(1, foundJobs.size());
         assertEquals("Java Developer", foundJobs.get(0).getTitle());
     }
